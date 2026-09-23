@@ -5,8 +5,8 @@ on:
 #    - cron: "10 6 1 * *"
   workflow_dispatch:
   push:
-    paths:
-      - .trigger
+#    paths:
+#      - .trigger
     branches:
       - main
 jobs:
