@@ -25,7 +25,7 @@ RUN chmod +x /usr/local/bin/firefox-runner
 
 ADD chromium-runner /usr/local/bin/chromium-runner
 RUN chmod +x /usr/local/bin/chromium-runner
-
+RUN which firefox-esr && ln -s $(which firefox-esr) /usr/bin/firefox
 RUN mkdir /selenium
 
 WORKDIR /selenium
