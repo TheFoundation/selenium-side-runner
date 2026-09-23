@@ -5,16 +5,12 @@ RUN sed -i -e 's/v[[:digit:]]\.[[:digit:]]*/edge/g' /etc/apk/repositories
 RUN echo http://dl-cdn.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositories
 RUN apk update && apk upgrade
 
-# Firefox 
-RUN apk add firefox-esr jq curl 
+# Firefox and Chromium
+RUN apk add --no-cache firefox-esr jq curl  chromium chromium-chromedriver
 RUN rm -rf /var/cache/apk/*
 
-RUN wget https://github.com/mozilla/geckodriver/releases/download/v0.30.0/geckodriver-v0.30.0-linux64.tar.gz \
-  && tar -zxf geckodriver-v0.30.0-linux64.tar.gz -C /usr/bin
-
-# Chromium
-RUN apk add chromium chromium-chromedriver
-RUN rm -rf /var/cache/apk/*
+RUN wget https://github.com/mozilla/geckodriver/releases/download/v0.37.1/geckodriver-v0.37.1-linux64.tar.gz \
+  && tar -zxf geckodriver-v0.37.1-linux64.tar.gz -C /usr/bin
 
 # Selenium Side Runner
 RUN set -eux \
